@@ -1,0 +1,57 @@
+digraph Model
+{
+    graph[rankdir=LR]
+
+    // mod.$name=/ti/common/multi_stack_validate
+
+    // mod.$name=/ti/devices/CCFG
+    ti_devices_CCFG -> ti_devices_CCFGTemplate0
+
+    // mod.$name=/ti/devices/CCFGTemplate
+
+    // mod.$name=/ti/devices/DriverLib
+
+    // mod.$name=/ti/devices/radioconfig/code_export_param
+
+    // mod.$name=/ti/devices/radioconfig/custom
+    ti_devices_radioconfig_custom -> ti_common_multi_stack_validate
+    ti_devices_radioconfig_custom -> RF_Custom_Setting
+
+    // mod.$name=/ti/devices/radioconfig/rfdesign
+
+    // mod.$name=/ti/devices/radioconfig/settings/prop
+    RF_Custom_Setting -> ti_drivers_RF
+    RF_Custom_Setting -> ti_devices_radioconfig_rfdesign
+    RF_Custom_Setting -> ti_devices_radioconfig_code_export_param0
+
+    // mod.$name=/ti/dpl/Settings
+
+    // mod.$name=/ti/drivers/Board
+    ti_drivers_Board -> ti_devices_DriverLib
+    ti_drivers_Board -> ti_dpl_Settings
+
+    // mod.$name=/ti/drivers/GPIO
+    ti_drivers_GPIO -> ti_drivers_Power
+    ti_drivers_GPIO -> ti_drivers_Board
+    CONFIG_GPIO_GLED -> CONFIG_PIN_GLED
+
+    // mod.$name=/ti/drivers/PIN
+    ti_drivers_PIN -> ti_drivers_Power
+    ti_drivers_PIN -> ti_drivers_Board
+
+    // mod.$name=/ti/drivers/Power
+    ti_drivers_Power -> ti_devices_CCFG
+    ti_drivers_Power -> ti_drivers_Board
+
+    // mod.$name=/ti/drivers/RF
+    ti_drivers_RF -> ti_drivers_Temperature
+    ti_drivers_RF -> ti_drivers_Power
+    ti_drivers_RF -> ti_drivers_Board
+    ti_drivers_RF -> CONFIG_RF_24GHZ
+    ti_drivers_RF -> CONFIG_RF_HIGH_PA
+    ti_drivers_RF -> CONFIG_RF_SUB1GHZ
+
+    // mod.$name=/ti/drivers/RTOS
+
+    // mod.$name=/ti/drivers/Temperature
+}
